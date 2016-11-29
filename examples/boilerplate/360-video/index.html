@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>360 Video</title>
+    <meta name="description" content="360 Video — A-Frame">
+    <script src="../../../dist/aframe-v0.3.2.js"></script>
+    <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
+    <!-- videoprova = https://ucarecdn.com/bcece0a8-86ce-460e-856b-40dac4875f15/-->
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <video id="video_1" src="../../assets/MegaCoaster.mp4"></video>
+      </a-assets>
+
+      <a-camera position="0 0 5">
+          <a-cursor id="cursor" color="yellow"></a-cursor>
+      </a-camera>
+      <a-videosphere src="#video_1" rotation="0 180 0"></a-videosphere>
+      <a-entity id="controls" video-controls="src:#video_1"></a-entity>
+      <button style="position:absolute; left:10px; top:10px; z-index:1" onclick="pauseVid()">Pause</button>
+      <button style="position:absolute; left:10px; top:30px; z-index:1" onclick="restartVid()">Go</button>
+    </a-scene>
+      
+     <script>
+         function pauseVid(){
+             var entity=document.querySelector("a-entity[video-controls]");
+             var comp=entity.components['video-controls'];
+             if(!comp.video_el.paused) {
+                 
+                 comp.video_el.pause();
+             }
+         }
+         
+         function restartVid(){
+             var entity=document.querySelector("a-entity[video-controls]");
+             var comp=entity.components['video-controls'];
+             if(comp.video_el.paused) {
+                 
+                 comp.video_el.play();
+             }
+         }
+     </script>
+  </body>
+</html>
