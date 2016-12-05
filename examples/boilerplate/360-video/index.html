@@ -11,13 +11,13 @@
   <body>
     <a-scene>
       <a-assets>
-        <video id="video_1" src="../../assets/MegaCoaster.mp4"></video>
+        <video id="video_1" src="../../assets/MegaCoaster.mp4" autoplay="false"></video>
       </a-assets>
 
       <a-camera position="0 0 5">
           <a-cursor id="cursor" color="yellow"></a-cursor>
       </a-camera>
-      <a-videosphere src="#video_1" rotation="0 180 0"></a-videosphere>
+      <a-videosphere src="#video_1" rotation="0 270 0"></a-videosphere>
       <a-entity id="controls" video-controls="src:#video_1"></a-entity>
       <button style="position:absolute; left:10px; top:10px; z-index:1" onclick="pauseVid()">Pause</button>
       <button style="position:absolute; left:10px; top:30px; z-index:1" onclick="restartVid()">Go</button>
